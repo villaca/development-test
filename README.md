@@ -1,7 +1,6 @@
 ## Simulado Xtech
 
-Esse é um teste prático para analisar seu conhecimento.  
-Ele irá avaliar seu conhecimento em GIT e Laravel.
+Esse é um teste prático para analisar seu conhecimento em GIT e Laravel.
 
 ### O que devo fazer?
 
@@ -16,4 +15,4 @@ Criar uma aplicação Laravel aonde o usuário final coloca um CEP e o sistema r
 
 Será levado em consideração, a organização do código (seguimos o padrão PSR-2), criatividade e funcionamento. 
 
-**Nos surpreenda!**
+**Pense fora da caixa! :wink:**
