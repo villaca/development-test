@@ -9,7 +9,7 @@ To begin, you should fork this repository. This will be your workstation.
 1. Create a CodeIgniter APP on your fork. We're currently using version 2.
 2. Your app should do some tasks:  
  a. CRUD for products.  
- b. Every 30 minutes create an order with random products.  
+ b. A cron for every 30 minutes create an order with random products.  
  c. Display all orders, this query should be cached.  
 
 ### Tasks Explanation
