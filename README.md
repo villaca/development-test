@@ -1,6 +1,6 @@
 ## Development Knowledge Test
 
-This will be a practical test to analyze your knowledge using GIT and CodeIgniter. However, any additional knowledge that can be used (Anything that makes sense to use) will also be analyzed.
+This will be a practical test to analyze your knowledge using GIT and CodeIgniter. However, any additional knowledge that can be used (that makes sense) will also be analyzed.
 
 ### Test
 
