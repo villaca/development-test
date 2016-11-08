@@ -1,18 +1,26 @@
-## Simulado Xtech
+## Development Knowledge Test
 
-Esse é um teste prático para analisar seu conhecimento em GIT e Laravel.
+This will be a practical test to analyze your knowledge using GIT and Laravel. However, any additional knowledge that can be used (Anything that makes sense to use) will also be analyzed.
 
-### O que devo fazer?
+### Test
 
-Para começar o simulado, você precisa fazer um fork desse repositório, esse será seu local de trabalho.
+To begin, you should fork this repository. This will be your workstation.
 
-#### **Exercício:**
-Criar uma aplicação Laravel aonde o usuário final coloca um CEP e o sistema retorne para esse usuário o endereço completo desse CEP. **Não faça a consulta externamente direto da view.** 
+1. Create a CodeIgniter APP on your fork. We're currently using version 2.
+2. Your app should do some tasks:
+- [ ] a. CRUD for products.
+- [ ] b. Every 30 minutes create an order with random products.
+- [ ] c. Display all orders, this query should be cached.
 
-**É permitido: (Desde que atenda as questões acima)**
-- AJAX 
-- VueJs 
+### Tasks Explanation
 
-Será levado em consideração, a organização do código (seguimos o padrão PSR-2), criatividade e funcionamento. 
+2.a - This should be basic stuff (name of product, price, stock quantity) 
+2.b - Orders must include random products that is available in stock. Also include new informations, like total value, an unique identifier.
+2.c - Display a view with all created orders, sort by latest created. This query should be cached, because orders are only created every thirty minutes.
 
-**Pense fora da caixa! :wink:**
+### Conclusion
+
+Will be also analyzed, code organization (we follow PSR-2), creativity and functionality.
+When you finish, do a PR and we analyze.
+
+**Do your best! :wink:**
