@@ -14,7 +14,7 @@ To begin, you should fork this repository. This will be your workstation.
 
 ### Tasks Explanation
 
-2.a - This should be basic stuff (name of product, price, stock quantity).
+2.a - This should be basic stuff (name of product, price, stock quantity).  
 2.b - Orders must include random products that is available in stock. Also include new informations, like total value, an unique identifier.  
 2.c - Display a view with all created orders, sort by latest created. This query should be cached, because orders are only created every thirty minutes.  
 
