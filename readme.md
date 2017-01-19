@@ -1,27 +1,26 @@
-# Laravel PHP Framework
+## Development Knowledge Test
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This will be a practical test to analyze your knowledge using GIT and CodeIgniter. However, any additional knowledge that can be used, i.e., reasonable, will also be analyzed.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+### Test
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+To begin, you should fork this repository. This will be your workstation.
 
-## Official Documentation
+1. Create a CodeIgniter/Laravel APP on your fork. We're currently using version 2.
+2. Your app should do some tasks:  
+ a. CRUD for products.  
+ b. A cron to create an order with random products every thirty minutes.  
+ c. Display all orders, this query should be cached.  
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+### Tasks Explanation
 
-## Contributing
+2.a - This should be basic stuff (name of product, price, stock quantity).  
+2.b - Orders must include random products that is available in stock. Also include new informations, like total value and an unique identifier.  
+2.c - Display a view with all created orders sorted by latest created. This query should be cached, because orders are only created every thirty minutes.  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### Conclusion
 
-## Security Vulnerabilities
+Will be also analyzed, code organization (we follow PSR-2), creativity and functionality.
+When you finish, do a PR and we analyze.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+**Do your best! :wink:**
