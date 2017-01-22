@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ProductController extends Controller
 {
@@ -13,7 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate(15);
+
+        return view("products.listing", ["products" => $products]);
     }
 
     /**
@@ -34,7 +39,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Product::firstOrCreate([
+            "name" => $request->name,
+            "price" => $request->price,
+            "stock_quatity" => $request->stockQuantity
+        ]);
+        /*
+        $product->setAttribute("name", $request->name);
+        $product->setAttribute("price", $request->price);
+        $product->setAttribute("stock_quantity", $request->stockQuantity);
+        $product->save();
+        */
+
+        return redirect("products/show/" . $product->getAttribute("id"));
     }
 
     /**
@@ -68,7 +85,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $product = Product::findOrFail($id);
+            $product->setAttribute("name", $request->name);
+            $product->setAttribute("price", $request->price);
+            $product->setAttribute("stock_quantity", $request->stockQuantity);
+            $product->save();
+
+        } catch (ModelNotFoundException $e) {
+            redirect("products", []);
+        }
+
+        return redirect("products/show/" . $product->getAttribute("id"))->with("success", "Product updated!");
     }
 
     /**
@@ -79,6 +107,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::destroy($id);
+        return redirect("products");
     }
 }
