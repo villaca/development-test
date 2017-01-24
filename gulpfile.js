@@ -14,6 +14,12 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
+    mix.sass([
+        'app.scss',
+        'listingtable.scss',
+        'forms.scss',
+        'nav.scss'
+        ])
        .webpack('app.js');
+    mix.copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/fonts/bootstrap');
 });

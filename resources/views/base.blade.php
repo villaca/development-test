@@ -7,6 +7,13 @@
     </head>
 
     <body>
+        <nav>
+            <ul>
+                <li><a href="{{ action('ProductController@index') }}">Products</a></li>
+                <li><a href="">Orders</a></li>
+            </ul>
+        </nav>
+
         <div class="container">
             @yield("content")
         </div>

@@ -18,7 +18,11 @@ class ProductController extends Controller
     {
         $products = Product::paginate(15);
 
-        return view("products.listing", ["products" => $products]);
+        return view("listing", [
+            "data" => $products,
+            "tableCaption" => "List of products",
+            "controllerName" => "ProductController"
+        ]);
     }
 
     /**
@@ -28,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.inserting');
     }
 
     /**
@@ -42,16 +46,11 @@ class ProductController extends Controller
         $product = Product::firstOrCreate([
             "name" => $request->name,
             "price" => $request->price,
-            "stock_quatity" => $request->stockQuantity
+            "stock_quantity" => $request->stockQuantity
         ]);
-        /*
-        $product->setAttribute("name", $request->name);
-        $product->setAttribute("price", $request->price);
-        $product->setAttribute("stock_quantity", $request->stockQuantity);
-        $product->save();
-        */
 
-        return redirect("products/show/" . $product->getAttribute("id"));
+        $url = action("ProductController@show", [$product->getAttribute("id")]);
+        return redirect($url);
     }
 
     /**
@@ -60,9 +59,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function  show($id)
     {
-        //
+        try {
+            $product = Product::findOrFail($id);
+
+            return view('visualizing', [
+                "data" => $product,
+                "controllerName" => "ProductController"
+            ]);
+
+        } catch (ModelNotFoundException $e){
+            redirect("products", ["errorMessage" => "Product not found!"]);
+        }
     }
 
     /**
@@ -73,7 +82,15 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $product = Product::findOrFail($id);
+
+            return view('products.editing', ["product" => $product]);
+
+        } catch (ModelNotFoundException $e) {
+            redirect("products", ["errorMessage" => "Product not found!"]);
+        }
+
     }
 
     /**
@@ -93,7 +110,7 @@ class ProductController extends Controller
             $product->save();
 
         } catch (ModelNotFoundException $e) {
-            redirect("products", []);
+            redirect("products", ["errorMessage" => "Product not found!"]);
         }
 
         return redirect("products/show/" . $product->getAttribute("id"))->with("success", "Product updated!");
