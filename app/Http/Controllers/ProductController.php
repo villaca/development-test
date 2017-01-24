@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class ProductController extends Controller
 {
@@ -49,7 +48,7 @@ class ProductController extends Controller
             "stock_quantity" => $request->stockQuantity
         ]);
 
-        $url = action("ProductController@show", [$product->getAttribute("id")]);
+        $url = action("ProductController@show", [$product->id]);
         return redirect($url);
     }
 
@@ -113,7 +112,7 @@ class ProductController extends Controller
             redirect("products", ["errorMessage" => "Product not found!"]);
         }
 
-        return redirect("products/show/" . $product->getAttribute("id"))->with("success", "Product updated!");
+        return redirect("products/show/" . $product->id)->with("success", "Product updated!");
     }
 
     /**

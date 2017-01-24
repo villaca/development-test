@@ -10,7 +10,7 @@
         <nav>
             <ul>
                 <li><a href="{{ action('ProductController@index') }}">Products</a></li>
-                <li><a href="">Orders</a></li>
+                <li><a href="{{ action('OrderController@index') }}">Orders</a></li>
             </ul>
         </nav>
 

@@ -93,6 +93,7 @@
 
         {{ $data->links() }}
 
+
         <div>
             @php
                 $url = action($controllerName . '@create');
