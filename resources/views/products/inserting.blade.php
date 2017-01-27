@@ -19,7 +19,7 @@
                     name="price"
                     required
                     min="0"
-                    max="999999.99"
+                    max="999.99"
                     step="0.01"
             >
             <br/>
@@ -31,7 +31,7 @@
                     name="stockQuantity"
                     required
                     min="0"
-                    max="500"
+                    max="100"
             >
             <br/>
         </fieldset>

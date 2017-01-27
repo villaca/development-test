@@ -2,24 +2,20 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Sale extends Model
+class Sale
 {
-    public $productName;
+    public $product;
     public $price;
-    public $stock_quantity;
-    public $quantityOrdered;
-
-
-    protected $visible = ['product', 'quantityOrdered'];
 
     public function __construct($product, $quantityOrdered,array $attributes = [])
     {
-        $this->productName = $product->productName;
-        $this->price = $product->price;
-        $this->stock_quantity = $product->stock_quantity;
+        $this->product = $product;
         $this->quantityOrdered = $quantityOrdered;
-        parent::__construct($attributes);
+        $this->price = $this->calculatePrice($product,$quantityOrdered);
+
+    }
+
+    private function calculatePrice($product,$quantityOrdered){
+        return $product->price * $quantityOrdered;
     }
 }

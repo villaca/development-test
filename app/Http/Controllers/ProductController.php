@@ -45,7 +45,7 @@ class ProductController extends Controller
         $product = Product::firstOrCreate([
             "name" => $request->name,
             "price" => $request->price,
-            "stock_quantity" => $request->stockQuantity
+            "stockQuantity" => $request->stockQuantity
         ]);
 
         $url = action("ProductController@show", [$product->id]);
@@ -105,7 +105,7 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             $product->setAttribute("name", $request->name);
             $product->setAttribute("price", $request->price);
-            $product->setAttribute("stock_quantity", $request->stockQuantity);
+            $product->setAttribute("stockQuantity", $request->stockQuantity);
             $product->save();
 
         } catch (ModelNotFoundException $e) {

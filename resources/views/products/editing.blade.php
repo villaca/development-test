@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <h3>New Product</h3>
+    <h3>Update Product</h3>
 
     <form action="{{ action('ProductController@store') }}" method="POST" class="formBody">
         {{ csrf_field() }}
@@ -19,7 +19,7 @@
                     name="price"
                     required
                     min="0"
-                    max="999999.99"
+                    max="999.99"
                     step="0.01"
                     value="{{ $product->price }}"
             >
@@ -32,8 +32,8 @@
                     name="stockQuantity"
                     required
                     min="0"
-                    max="500"
-                    value="{{ $product->stock_quantity }}"
+                    max="100"
+                    value="{{ $product->stockQuantity }}"
             >
             <br/>
         </fieldset>

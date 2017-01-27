@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Order;
 use App\RandomOrder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
@@ -40,11 +41,9 @@ class OrderCreator extends Command
     public function handle()
     {
         $orderList = [];
-        $orderList = Cache::get("orderList");
-        $order = new RandomOrder();
-        array_push($orderList, $order);
+        //$orderList = Cache::get("orderList");
 
-
-        Cache::put("orderList", $order, 600);
+        Order::generateRandomOrder();
+        //Cache::put("orderList", $order, 600);
     }
 }

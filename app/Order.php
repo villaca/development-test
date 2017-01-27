@@ -6,34 +6,60 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public $salesDone = [];
-    public $creationTime;
 
-    protected $visible = ['salesDone'];
-
-    public function __construct(array $sales, array $attributes = [])
+    public function products()
     {
-        parent::__construct($attributes);
-        $this->salesDone = $sales;
-        $creationTime = time();
-
+        return $this->belongsToMany('App\Product')->withPivot("productQuantity", "price");
     }
 
-    final public function totalPrice()
-    {
-        $totalPrice = 0;
 
-        for($i = 0; $i < count($this->salesDone) - 1; $i++){
-            $totalPrice += $this->salesDone[$i]->product->price;
+    public static function generateRandomOrder()
+    {
+        $randomOrder = new Order();
+        $randomOrder->totalPrice = 0;
+        $randomOrder->save();
+
+        $randomOrder->randomize();
+        return $randomOrder;
+    }
+
+
+    private function randomize()
+    {
+        $products = Product::all();
+        $numberOfSalesToBeOrdered = $this->numberOfSalesToBeOrdered();
+
+        $salesDone = 0;
+        while ($salesDone < $numberOfSalesToBeOrdered) {
+            $sale = $this->randomizeSale($products);
+
+            $this->products()->attach(
+                $sale->product->id,
+                [
+                    'productQuantity' =>  $sale->quantityOrdered,
+                    'price' => $sale->price
+                ]
+            );
+
+            $this->totalPrice += $sale->price;
+            $this->save();
+            $salesDone++;
         }
-
-        return $totalPrice;
     }
 
-    final public function addSale(Sale $sale)
+    private function numberOfSalesToBeOrdered()
     {
-        array_push($this->salesDone, $sale);
+        $numberOfProductsAvailable = Product::where("stockQuantity", ">", 0)->count();
+        return rand(1,$numberOfProductsAvailable);
     }
 
+    private function randomizeSale($products)
+    {
+        $productToBeAdd = $products[rand(0, count($products) - 1)];
+        $quantityOrdered = rand(1, $productToBeAdd->stockQuantity);
+
+        $saleToBeAdd = new Sale($productToBeAdd,$quantityOrdered);
+        return $saleToBeAdd;
+    }
 
 }
