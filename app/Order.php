@@ -13,6 +13,12 @@ class Order extends Model
     }
 
 
+    /**
+     * Public contract for placing random orders
+     *
+     * @return Order an order with randomized products and
+     * quantities of each product
+     */
     public static function generateRandomOrder()
     {
         $randomOrder = new Order();
@@ -24,6 +30,9 @@ class Order extends Model
     }
 
 
+    /**
+     *  Builds the random order
+     */
     private function randomize()
     {
         $products = Product::all();
@@ -47,12 +56,19 @@ class Order extends Model
         }
     }
 
+    /**
+     * @return int how many products will be ordered
+     */
     private function numberOfSalesToBeOrdered()
     {
         $numberOfProductsAvailable = Product::where("stockQuantity", ">", 0)->count();
         return rand(1,$numberOfProductsAvailable);
     }
 
+    /**
+     * @param $products a collection of product that can possibly ordered
+     * @return Sale a random product with a random respective quantity
+     */
     private function randomizeSale($products)
     {
         $productToBeAdd = $products[rand(0, count($products) - 1)];

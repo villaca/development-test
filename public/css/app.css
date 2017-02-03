@@ -7698,6 +7698,14 @@ button.close {
   margin-bottom: 1.0em;
 }
 
+.attributeListing div span {
+  font-size: xx-large;
+}
+
+.attributeType {
+  text-decoration: underline;
+}
+
 .formBody {
   margin-top: 1.5em;
 }

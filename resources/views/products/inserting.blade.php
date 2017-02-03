@@ -41,7 +41,4 @@
             <input type="reset" value="Clear fields"/>
         </fieldset>
     </form>
-
-
-
 @endsection

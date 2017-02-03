@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $products = Product::paginate(15);
 
-        return view("listing", [
+        return view("products.listing", [
             "data" => $products,
             "tableCaption" => "List of products",
             "controllerName" => "ProductController"
@@ -63,7 +63,7 @@ class ProductController extends Controller
         try {
             $product = Product::findOrFail($id);
 
-            return view('visualizing', [
+            return view('products.visualizing', [
                 "data" => $product,
                 "controllerName" => "ProductController"
             ]);

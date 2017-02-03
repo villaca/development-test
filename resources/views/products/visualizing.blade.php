@@ -9,7 +9,7 @@
                     @if ($key != "created_at")
                         @if ($key != "updated_at")
                             <div>
-                                <span class="attributeType">{{ $key }} : </span>
+                                <span class="attributeType">{{ $key }} :</span>
                                 <span class="attributeValue"> {{ $attribute }}</span>
                             </div>
                         @endif
@@ -45,12 +45,5 @@
                 </button>
             </form>
         </div>
-
-
-
     @endif
-
-
-
-
 @endsection

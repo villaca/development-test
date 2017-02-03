@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class OrderController extends Controller
@@ -16,23 +15,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //Order::generateRandomOrder();
-
-        /*if (Cache::has("orderList")) {
+        if (Cache::has("orderList")) {
             $orderList = Cache::get("orderList");
         } else {
             $orderList = Order::all();
-            Cache::put("orderList", $orderList, 600);
-        }*/
-
-        $orderList = Order::all();
-
-        echo '<pre>';
-        var_dump($orderList);
-        echo '</pre>';
+            Cache::put("orderList", $orderList, 30);
+        }
 
         return view("orders.listing", [
-            "data" => $orderList,
+            "data" => $orderList->sortByDesc("created_at"),
             "tableCaption" => "List of orders",
             "controllerName" => "OrderController"
         ]);

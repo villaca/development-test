@@ -2,20 +2,15 @@
 
 @section("content")
 
-
-
     @if (isset($data))
         <div class="attributeListing">
             @foreach($data["attributes"] as $key => $attribute)
                 <div>
-                    <span class="attributeType">{{ $key }} : </span>
+                    <span class="attributeType">{{ $key }} :</span>
                     <span class="attributeValue"> {{ $attribute }}</span>
                 </div>
             @endforeach
-
         </div>
-
-
 
         <table class="listingTable table">
             @if (isset($tableCaption))
@@ -48,13 +43,6 @@
 
                 @endforeach
             </tbody>
-
-
         </table>
-
-
-
-
     @endif
-
 @endsection

@@ -3,7 +3,6 @@
 @section("content")
     @if (isset($data))
 
-
         <table class="listingTable table">
             @if (isset($tableCaption))
                 <caption><h3>{{ $tableCaption }}</h3></caption>
@@ -48,12 +47,6 @@
                 </tr>
             @endforeach
             </tbody>
-
-
         </table>
-
-
-
-
     @endif
 @endsection
