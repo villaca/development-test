@@ -68,13 +68,14 @@ class Order extends Model
     }
 
     /**
-     * @param $products a collection of product that can possibly ordered
+     * @param $products a collection of products that can be ordered
      * @return Sale a random product with a random respective quantity
      */
     private function randomizeSale($products)
     {
         $productToBeAdd = $products[rand(0, count($products) - 1)];
         $quantityOrdered = rand(1, $productToBeAdd->stockQuantity);
+        $productToBeAdd->removeFromStock($quantityOrdered);
 
         $saleToBeAdd = new Sale($productToBeAdd,$quantityOrdered);
         return $saleToBeAdd;
