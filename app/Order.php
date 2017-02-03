@@ -42,6 +42,7 @@ class Order extends Model
         while ($salesDone < $numberOfSalesToBeOrdered) {
             $sale = $this->randomizeSale($products);
 
+
             $this->products()->attach(
                 $sale->product->id,
                 [
@@ -53,6 +54,7 @@ class Order extends Model
             $this->totalPrice += $sale->price;
             $this->save();
             $salesDone++;
+            $products->forget($sale->product->id -1);
         }
     }
 

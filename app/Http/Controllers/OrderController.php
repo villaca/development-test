@@ -47,7 +47,10 @@ class OrderController extends Controller
             ]);
 
         } catch (ModelNotFoundException $e){
-            redirect("products", ["errorMessage" => "Order not found!"]);
+            return redirect("products")->with("errorMessage", "Order not found!");
+        } catch (\Exception $e){
+            return redirect("products")->with("errorMessage", "Something went wrong!");
         }
+
     }
 }

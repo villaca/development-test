@@ -69,7 +69,9 @@ class ProductController extends Controller
             ]);
 
         } catch (ModelNotFoundException $e){
-            redirect("products", ["errorMessage" => "Product not found!"]);
+            return redirect("products")->with("errorMessage" , "Product not found!");
+        } catch (\Exception $e){
+            return redirect("products")->with("errorMessage", "Something went wrong!");
         }
     }
 
@@ -87,7 +89,9 @@ class ProductController extends Controller
             return view('products.editing', ["product" => $product]);
 
         } catch (ModelNotFoundException $e) {
-            redirect("products", ["errorMessage" => "Product not found!"]);
+            return redirect("products")->with("errorMessage", "Product not found!");
+        } catch (\Exception $e){
+            return redirect("products")->with("errorMessage", "Something went wrong!");
         }
 
     }
@@ -109,7 +113,9 @@ class ProductController extends Controller
             $product->save();
 
         } catch (ModelNotFoundException $e) {
-            redirect("products", ["errorMessage" => "Product not found!"]);
+            return redirect("products")->with("errorMessage", "Product not found!");
+        } catch (\Exception $e){
+            return redirect("products")->with("errorMessage", "Something went wrong!");
         }
 
         return redirect("products/show/" . $product->id)->with("success", "Product updated!");
